@@ -41,7 +41,6 @@ export async function fetchListItems(
 
     return itemsWithSize;
   } catch (error) {
-    console.error("Error fetching list items:", error);
     throw error;
   }
 }

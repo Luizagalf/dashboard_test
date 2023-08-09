@@ -1,32 +1,30 @@
-import { observable, action, makeAutoObservable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
-import { fetchListItems } from "../services/api";
+import { fetchListItems } from "services/api";
 import { IListItems } from "interfaces/ListItems";
 
 class ListStore {
   rootStore: RootStore;
 
-  @observable listItems: IListItems = {};
-  @observable isLoading: boolean = false;
-  @observable page: number = 1;
-  @observable limit: number = 20;
+  listItems: IListItems = {};
+  isLoading: boolean = false;
+  page: number = 1;
+  limit: number = 20;
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
     makeAutoObservable(this);
   }
 
-  @action
   updateListItems(newItems: IListItems) {
     this.listItems = newItems;
   }
 
-  @action
   setIsLoading(value: boolean) {
     this.isLoading = value;
   }
 
-  @action loadListItems = async () => {
+  loadListItems = async () => {
     try {
       if (this.isLoading) return;
       this.setIsLoading(true);
@@ -40,7 +38,7 @@ class ListStore {
     }
   };
 
-  @action toggleFavorite = (itemId: number) => {
+  toggleFavorite = (itemId: number) => {
     const newListItems = { ...this.listItems };
     newListItems[itemId] = {
       ...this.listItems[itemId],

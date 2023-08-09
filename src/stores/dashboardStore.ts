@@ -1,17 +1,17 @@
-import { observable, action, makeAutoObservable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 class DashboardStore {
   rootStore: RootStore;
 
-  @observable favoriteItems: number[] = [];
-  @observable totalFileSize: number = 0;
+  favoriteItems: number[] = [];
+  totalFileSize: number = 0;
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
     makeAutoObservable(this);
   }
 
-  @action calculateTotalFileSize = (isAdded: boolean) => {
+  calculateTotalFileSize = (isAdded: boolean) => {
     if (isAdded) {
       this.favoriteItems.forEach(
         (item) =>
@@ -25,12 +25,12 @@ class DashboardStore {
     }
   };
 
-  @action addNewFavoriteItem = (id: number) => {
+  addNewFavoriteItem = (id: number) => {
     this.favoriteItems.push(id);
     this.calculateTotalFileSize(true);
   };
 
-  @action removeNewFavoriteItem = (id: number) => {
+  removeNewFavoriteItem = (id: number) => {
     const newFavoriteItems = this.favoriteItems.filter(
       (number) => number !== id
     );
@@ -38,7 +38,7 @@ class DashboardStore {
     this.calculateTotalFileSize(false);
   };
 
-  @action updateFavorites = (favorites: number[]) => {
+  updateFavorites = (favorites: number[]) => {
     this.favoriteItems = favorites;
   };
 }

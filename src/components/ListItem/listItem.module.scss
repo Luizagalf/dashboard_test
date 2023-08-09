@@ -8,12 +8,17 @@
   border-radius: 6px;
   border: 1px solid $gray5;
   box-shadow: 0 0 10px rgba(32, 31, 30, 0.3);
+  background-color: $gray8;
 }
 
 .row1,
 .row2 {
   display: flex;
   gap: 10px;
+
+  & img {
+    pointer-events: none;
+  }
 }
 
 .row1 {
@@ -48,4 +53,5 @@
 .text {
   @include text;
   color: $gray7;
+  word-break: break-word;
 }

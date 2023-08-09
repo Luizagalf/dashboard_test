@@ -1,28 +1,45 @@
-import React from "react";
-import { Draggable } from "react-beautiful-dnd";
+import React, { useState } from "react";
 import { IDraggableItemProps } from "./interface";
 import ListItem from "components/ListItem";
+import styles from "./draggableItem.module.scss";
 
-const DraggableItem: React.FC<IDraggableItemProps> = ({ item, index }) => {
+const DraggableItem: React.FC<IDraggableItemProps> = ({
+  item,
+  index,
+  moveItem
+}) => {
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    e.dataTransfer!.setData("text/plain", index.toString());
+    setIsDragging(true);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const sourceIndex = parseInt(e.dataTransfer!.getData("text/plain"));
+    moveItem(sourceIndex, index);
+  };
+
   return (
-    <Draggable draggableId={item.id.toString()} index={index}>
-      {(provided) => (
-        <div
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          style={{
-            userSelect: "none",
-            padding: 16,
-            margin: "0 0 8px 0",
-            backgroundColor: "lightgray",
-            ...provided.draggableProps.style
-          }}
-        >
-          <ListItem key={item.id} item={item} />
-        </div>
-      )}
-    </Draggable>
+    <div
+      draggable
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+      className={`${styles.element} ${isDragging ? styles.dragging : ""}`}
+    >
+      <ListItem key={item.id} item={item} />
+    </div>
   );
 };
 

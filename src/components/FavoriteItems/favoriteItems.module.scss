@@ -2,9 +2,5 @@
 
 .list {
   @include listWrapper;
-  height: 83vh;
-}
-
-.text {
-  @include subtitle;
+  height: calc(100vh - 200px);
 }

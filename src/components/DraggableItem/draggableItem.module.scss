@@ -1,0 +1,11 @@
+@import "assets/styles/index.scss";
+
+.element {
+  user-select: none;
+  cursor: grab;
+}
+
+.dragging {
+  opacity: 0.8;
+  transform: rotate(3deg);
+}

@@ -1,26 +1,24 @@
 import React from "react";
 import { IFavoriteItemsProps } from "./interface";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggableItem from "components/DraggableItem";
+import styles from "./favoriteItems.module.scss";
 
 const FavoriteItems: React.FC<IFavoriteItemsProps> = ({
   listItems,
   favoriteItems,
-  onDragEnd
+  moveItem
 }) => {
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="droppable" direction="vertical">
-        {(provided) => (
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {favoriteItems.map((id: number, index: number) => (
-              <DraggableItem key={id} item={listItems[id]} index={index} />
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <div className={styles.list}>
+      {favoriteItems.map((id: number, index: number) => (
+        <DraggableItem
+          key={id}
+          item={listItems[id]}
+          index={index}
+          moveItem={moveItem}
+        />
+      ))}
+    </div>
   );
 };
 

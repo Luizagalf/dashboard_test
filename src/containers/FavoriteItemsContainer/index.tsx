@@ -7,21 +7,18 @@ const FavoriteItemsContainer: React.FC = observer(() => {
   const { favoriteItems, updateFavorites } = useStores().dashboardStore;
   const { listItems } = useStores().listStore;
 
-  const handleDragEnd = (result: any) => {
-    if (!result.destination) return;
-
-    const updatedItems = Array.from(favoriteItems);
-    const [reorderedItem] = updatedItems.splice(result.source.index, 1);
-    updatedItems.splice(result.destination.index, 0, reorderedItem);
-
-    updateFavorites(updatedItems);
+  const moveItem = (dragIndex: number, hoverIndex: number) => {
+    const newNumbers = [...favoriteItems];
+    const [draggedNumber] = newNumbers.splice(dragIndex, 1);
+    newNumbers.splice(hoverIndex, 0, draggedNumber);
+    updateFavorites(newNumbers);
   };
 
   return (
     <FavoriteItems
       favoriteItems={favoriteItems}
       listItems={listItems}
-      onDragEnd={handleDragEnd}
+      moveItem={moveItem}
     />
   );
 });
