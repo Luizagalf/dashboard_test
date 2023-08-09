@@ -1,27 +1,21 @@
 import React from "react";
 import ListItem from "components/ListItem";
-import { IListItems } from "interfaces/ListItems";
+import { IListProps } from "./interface";
+import styles from "./list.module.scss";
 
-interface ListProps {
-  listItems: IListItems;
-  isLoading: boolean;
-  toggleFavorite: (itemId: number) => void;
-}
-
-const List: React.FC<ListProps> = ({
+const List: React.FC<IListProps> = ({
   listItems,
   isLoading,
-  toggleFavorite
+  toggleFavorite,
+  forwardedRef
 }) => {
   return (
-    <>
-      <div>
-        {Object.values(listItems).map((item) => (
-          <ListItem key={item.id} item={item} toggleFavorite={toggleFavorite} />
-        ))}
-      </div>
-      {isLoading && <p>Loading...</p>}
-    </>
+    <div className={styles.list} ref={forwardedRef}>
+      {Object.values(listItems).map((item) => (
+        <ListItem key={item.id} item={item} toggleFavorite={toggleFavorite} />
+      ))}
+      {isLoading && <p className={styles.text}>Загрузка...</p>}
+    </div>
   );
 };
 

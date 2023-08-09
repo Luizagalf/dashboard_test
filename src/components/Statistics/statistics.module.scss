@@ -1,0 +1,14 @@
+@import "assets/styles/index.scss";
+
+.wrapper {
+  padding: 10px;
+  background-color: $lightOrange;
+  border-radius: 6px;
+  text-align: right;
+  width: fit-content;
+  float: right;
+}
+
+.text {
+  @include text;
+}

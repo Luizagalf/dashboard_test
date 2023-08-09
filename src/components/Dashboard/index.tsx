@@ -1,22 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { IDashboardProps } from "./interface";
+import Header from "components/Header";
+import Statistics from "components/Statistics";
 
-interface DashboardProps {
-  favoriteItemsCount: number;
-  totalFileSize: number;
-}
-
-const Dashboard: React.FC<DashboardProps> = ({
+const Dashboard: React.FC<IDashboardProps> = ({
   favoriteItemsCount,
   totalFileSize
 }) => {
   return (
-    <div>
-      <h1>Dashboard Page</h1>
-      <p>Favorite Items: {favoriteItemsCount}</p>
-      <p>Total File Size: {totalFileSize} MB</p>
-      <Link to="/list">Go to List</Link>
-    </div>
+    <>
+      <Header title="Dashboard" buttonTitle="Перейти в список" to="/list" />
+      <Statistics
+        favoriteItemsCount={favoriteItemsCount}
+        totalFileSize={totalFileSize}
+      />
+    </>
   );
 };
 

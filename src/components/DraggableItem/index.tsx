@@ -1,14 +1,9 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { IListItem } from "interfaces/ListItem";
+import { IDraggableItemProps } from "./interface";
 import ListItem from "components/ListItem";
 
-interface DraggableItemProps {
-  item: IListItem;
-  index: number;
-}
-
-const DraggableItem: React.FC<DraggableItemProps> = ({ item, index }) => {
+const DraggableItem: React.FC<IDraggableItemProps> = ({ item, index }) => {
   return (
     <Draggable draggableId={item.id.toString()} index={index}>
       {(provided) => (

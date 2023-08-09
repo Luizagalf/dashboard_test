@@ -1,0 +1,51 @@
+@import "assets/styles/index.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid $gray5;
+  box-shadow: 0 0 10px rgba(32, 31, 30, 0.3);
+}
+
+.row1,
+.row2 {
+  display: flex;
+  gap: 10px;
+}
+
+.row1 {
+  align-items: center;
+}
+
+.title {
+  @include subtitle;
+  color: $gray7;
+}
+
+.button {
+  @include caption;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+  color: $white;
+  background-color: $darkBlue;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+
+  &:hover {
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  &:focus {
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.text {
+  @include text;
+  color: $gray7;
+}

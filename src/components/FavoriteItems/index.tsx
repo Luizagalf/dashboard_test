@@ -1,15 +1,9 @@
 import React from "react";
-import { IListItems } from "interfaces/ListItems";
+import { IFavoriteItemsProps } from "./interface";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggableItem from "components/DraggableItem";
 
-interface FavoriteItemsProps {
-  listItems: IListItems;
-  favoriteItems: number[];
-  onDragEnd: (result: any) => void;
-}
-
-const FavoriteItems: React.FC<FavoriteItemsProps> = ({
+const FavoriteItems: React.FC<IFavoriteItemsProps> = ({
   listItems,
   favoriteItems,
   onDragEnd

@@ -1,11 +1,7 @@
-import React, { ReactElement, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { IErrorBoundaryProps } from "./interface";
 
-interface ErrorBoundaryProps {
-  fallback: ReactElement;
-  children: ReactElement;
-}
-
-const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({
+const ErrorBoundary: React.FC<IErrorBoundaryProps> = ({
   children,
   fallback
 }) => {

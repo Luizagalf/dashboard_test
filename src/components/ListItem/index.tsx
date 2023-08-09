@@ -1,21 +1,25 @@
 import React from "react";
-import { IListItem } from "interfaces/ListItem";
+import { IListItemProps } from "./interface";
+import styles from "./listItem.module.scss";
 
-interface ListItemProps {
-  item: IListItem;
-  toggleFavorite?: (itemId: number) => void;
-}
-
-const ListItem: React.FC<ListItemProps> = ({ item, toggleFavorite }) => {
+const ListItem: React.FC<IListItemProps> = ({ item, toggleFavorite }) => {
   return (
-    <div>
-      <img src={item.thumbnailUrl} alt={item.title} />
-      <p>{item.title}</p>
-      {toggleFavorite && (
-        <button onClick={() => toggleFavorite(item.id)}>
-          {item.isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-        </button>
-      )}
+    <div className={styles.wrapper}>
+      <div className={styles.row1}>
+        <h5 className={styles.title}>{item.id}</h5>
+        {toggleFavorite && (
+          <button
+            onClick={() => toggleFavorite(item.id)}
+            className={styles.button}
+          >
+            {item.isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
+          </button>
+        )}
+      </div>
+      <div className={styles.row2}>
+        <img src={item.thumbnailUrl} alt={item.title} />
+        <p className={styles.text}>{item.title}</p>{" "}
+      </div>
     </div>
   );
 };

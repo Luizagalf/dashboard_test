@@ -1,0 +1,18 @@
+@import "assets/styles/index.scss";
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  background-color: $gray8;
+  border-radius: 6px;
+  margin-top: 10px;
+  overflow-y: auto;
+  height: 83vh;
+}
+
+.text {
+  @include subtitle;
+  text-align: center;
+}

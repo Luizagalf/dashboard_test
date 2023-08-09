@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import ListContainer from "containers/ListContainer";
 import { useStores } from "stores/rootStore";
+import Header from "components/Header";
 
 const ListPage: React.FC = observer(() => {
   const { listStore } = useStores();
@@ -13,8 +13,7 @@ const ListPage: React.FC = observer(() => {
 
   return (
     <div>
-      <h1>List Page</h1>
-      <Link to="/">Back to Dashboard</Link>
+      <Header title="Список элементов" buttonTitle="Вернуться назад" to="/" />
       <ListContainer />
     </div>
   );
