@@ -4,7 +4,7 @@ import { useStores } from "stores/rootStore";
 import List from "components/List";
 
 const ListContainer: React.FC = () => {
-  const { listItems, isLoading, loadListItems, toggleFavorite, page } =
+  const { listItems, isLoading, isError, loadListItems, toggleFavorite, page } =
     useStores().listStore;
 
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -39,6 +39,7 @@ const ListContainer: React.FC = () => {
     <List
       listItems={listItems}
       isLoading={isLoading}
+      isError={isError}
       toggleFavorite={toggleFavorite}
       forwardedRef={listRef}
     />

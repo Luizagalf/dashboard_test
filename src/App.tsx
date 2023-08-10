@@ -8,8 +8,12 @@ const ListPage = lazy(() => import("./pages/ListPage"));
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <ErrorBoundary fallback={<div>Oops! Something went wrong.</div>}>
-        <Suspense fallback={<div>Loading...</div>}>
+      <ErrorBoundary
+        fallback={
+          <div>Упс! Что-то пошло не так. Пожалуйста, обновите страницу.</div>
+        }
+      >
+        <Suspense fallback={<div>Загрузка...</div>}>
           <Routes>
             <Route index path="/" element={<DashboardPage />} />
             <Route path="/list" element={<ListPage />} />

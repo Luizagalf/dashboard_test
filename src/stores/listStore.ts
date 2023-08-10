@@ -8,6 +8,7 @@ class ListStore {
 
   listItems: IListItems = {};
   isLoading: boolean = false;
+  isError: boolean = false;
   page: number = 1;
   limit: number = 20;
 
@@ -23,6 +24,11 @@ class ListStore {
   setIsLoading(value: boolean) {
     this.isLoading = value;
   }
+
+  setIsError(value: boolean) {
+    this.isError = value;
+  }
+
   setPage(value: number) {
     this.page = value;
   }
@@ -36,6 +42,7 @@ class ListStore {
       this.setPage(this.page + 1);
       this.setIsLoading(false);
     } catch (error) {
+      this.setIsError(true);
       this.setIsLoading(false);
     }
   };

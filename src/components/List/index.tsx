@@ -6,6 +6,7 @@ import styles from "./list.module.scss";
 const List: React.FC<IListProps> = ({
   listItems,
   isLoading,
+  isError,
   toggleFavorite,
   forwardedRef
 }) => {
@@ -19,6 +20,11 @@ const List: React.FC<IListProps> = ({
         <ListItem key={item.id} item={item} toggleFavorite={toggleFavorite} />
       ))}
       {isLoading && <p className={styles.text}>Загрузка...</p>}
+      {isError && (
+        <p className={styles.text}>
+          Упс! Что-то пошло не так. Пожалуйста, обновите страницу.
+        </p>
+      )}
     </div>
   );
 };
