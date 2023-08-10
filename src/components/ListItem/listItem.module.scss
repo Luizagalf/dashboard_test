@@ -37,15 +37,15 @@
   border-radius: 6px;
   border: none;
   color: $white;
-  background-color: $darkBlue;
+  background-color: $green;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 
-  &:hover {
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+  &__isFavorite {
+    background-color: $red;
   }
 
-  &:focus {
+  &:hover {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
   }
 }

@@ -10,7 +10,11 @@ const List: React.FC<IListProps> = ({
   forwardedRef
 }) => {
   return (
-    <div className={styles.list} ref={forwardedRef}>
+    <div
+      className={styles.list}
+      ref={forwardedRef}
+      data-testid="list-container"
+    >
       {Object.values(listItems).map((item) => (
         <ListItem key={item.id} item={item} toggleFavorite={toggleFavorite} />
       ))}

@@ -6,9 +6,16 @@ body {
   -webkit-font-smoothing: antialiassed;
   -moz-osx-font-smoothing: grayscale;
   background-color: $gray2;
-  padding: 20px;
   overflow: hidden;
-  height: 100vh;
+
+  & > div {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 }
 
 h1,

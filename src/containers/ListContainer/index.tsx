@@ -10,7 +10,6 @@ const ListContainer: React.FC = () => {
   const listRef = useRef<HTMLDivElement | null>(null);
 
   const handleScroll = () => {
-    console.log(listRef);
     if (isLoading || !listRef.current) return;
 
     const listElement = listRef.current;
@@ -31,6 +30,10 @@ const ListContainer: React.FC = () => {
       };
     }
   }, [isLoading, loadListItems]);
+
+  useEffect(() => {
+    if (page <= 5) loadListItems();
+  }, []);
 
   return (
     <List

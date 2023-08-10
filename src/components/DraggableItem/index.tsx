@@ -11,8 +11,10 @@ const DraggableItem: React.FC<IDraggableItemProps> = ({
   const [isDragging, setIsDragging] = useState(false);
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-    e.dataTransfer!.setData("text/plain", index.toString());
-    setIsDragging(true);
+    if (e.dataTransfer) {
+      e.dataTransfer!.setData("text/plain", index.toString());
+      setIsDragging(true);
+    }
   };
 
   const handleDragEnd = () => {
@@ -37,6 +39,7 @@ const DraggableItem: React.FC<IDraggableItemProps> = ({
       onDragOver={handleDragOver}
       onDrop={handleDrop}
       className={`${styles.element} ${isDragging ? styles.dragging : ""}`}
+      data-testid="draggableItem"
     >
       <ListItem key={item.id} item={item} />
     </div>

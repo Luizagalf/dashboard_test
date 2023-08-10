@@ -10,7 +10,9 @@ const ListItem: React.FC<IListItemProps> = ({ item, toggleFavorite }) => {
         {toggleFavorite && (
           <button
             onClick={() => toggleFavorite(item.id)}
-            className={styles.button}
+            className={`${styles.button} ${
+              item.isFavorite ? styles.button__isFavorite : ""
+            }`}
           >
             {item.isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
           </button>

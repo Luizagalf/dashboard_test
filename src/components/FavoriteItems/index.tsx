@@ -9,16 +9,22 @@ const FavoriteItems: React.FC<IFavoriteItemsProps> = ({
   moveItem
 }) => {
   return (
-    <div className={styles.list}>
-      {favoriteItems.map((id: number, index: number) => (
-        <DraggableItem
-          key={id}
-          item={listItems[id]}
-          index={index}
-          moveItem={moveItem}
-        />
-      ))}
-    </div>
+    <>
+      {favoriteItems.length ? (
+        <div className={styles.list} data-testid="favoriteItemsList">
+          {favoriteItems.map((id: number, index: number) => (
+            <DraggableItem
+              key={id}
+              item={listItems[id]}
+              index={index}
+              moveItem={moveItem}
+            />
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 

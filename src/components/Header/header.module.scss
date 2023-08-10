@@ -7,4 +7,12 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
+
+  @media screen and (max-width: $phone) {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: #{$phone + 1px}) {
+    justify-content: space-between;
+  }
 }

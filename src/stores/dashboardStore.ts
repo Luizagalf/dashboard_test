@@ -11,31 +11,25 @@ class DashboardStore {
     makeAutoObservable(this);
   }
 
-  calculateTotalFileSize = (isAdded: boolean) => {
-    if (isAdded) {
-      this.favoriteItems.forEach(
-        (item) =>
-          (this.totalFileSize += this.rootStore.listStore.listItems[item].size)
-      );
-    } else {
-      this.favoriteItems.forEach(
-        (item) =>
-          (this.totalFileSize -= this.rootStore.listStore.listItems[item].size)
-      );
-    }
+  calculateTotalFileSize = (newFavoriteItems: number[]) => {
+    this.totalFileSize = 0;
+    newFavoriteItems.forEach(
+      (item) =>
+        (this.totalFileSize += this.rootStore.listStore.listItems[item].size)
+    );
   };
 
   addNewFavoriteItem = (id: number) => {
     this.favoriteItems.push(id);
-    this.calculateTotalFileSize(true);
+    this.calculateTotalFileSize(this.favoriteItems);
   };
 
-  removeNewFavoriteItem = (id: number) => {
+  removeFavoriteItem = (id: number) => {
     const newFavoriteItems = this.favoriteItems.filter(
       (number) => number !== id
     );
     this.favoriteItems = newFavoriteItems;
-    this.calculateTotalFileSize(false);
+    this.calculateTotalFileSize(newFavoriteItems);
   };
 
   updateFavorites = (favorites: number[]) => {

@@ -23,6 +23,9 @@ class ListStore {
   setIsLoading(value: boolean) {
     this.isLoading = value;
   }
+  setPage(value: number) {
+    this.page = value;
+  }
 
   loadListItems = async () => {
     try {
@@ -30,10 +33,9 @@ class ListStore {
       this.setIsLoading(true);
       const newItems: IListItems = await fetchListItems(this.page, this.limit);
       this.updateListItems({ ...this.listItems, ...newItems });
-      this.page += 1;
+      this.setPage(this.page + 1);
       this.setIsLoading(false);
     } catch (error) {
-      console.error("Error loading list items:", error);
       this.setIsLoading(false);
     }
   };
@@ -48,7 +50,7 @@ class ListStore {
 
     if (newListItems[itemId].isFavorite) {
       this.rootStore.dashboardStore.addNewFavoriteItem(itemId);
-    } else this.rootStore.dashboardStore.removeNewFavoriteItem(itemId);
+    } else this.rootStore.dashboardStore.removeFavoriteItem(itemId);
   };
 }
 

@@ -6,7 +6,7 @@ describe("fetchListItems", () => {
     const page = 1;
     const limit = 10;
 
-    const listItems = await fetchListItems(page, limit);
+    const listItems: IListItems = await fetchListItems(page, limit);
 
     expect(Object.keys(listItems).length).toBe(limit);
     expect(
