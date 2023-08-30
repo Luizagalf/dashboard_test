@@ -2,6 +2,7 @@
   "name": "dashboard_test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://luizagalf.github.io/dashboard_test",
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
