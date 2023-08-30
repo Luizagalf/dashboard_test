@@ -21,10 +21,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test --coverage",
-    "test:watch": "react-scripts test --watch"
+    "test:watch": "react-scripts test --watch",
+    "predeploy": "npm run build",
+    "deploy": "git add build && git commit -m 'Deploy to GitHub Pages' && git push",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
