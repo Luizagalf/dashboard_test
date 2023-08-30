@@ -1,6 +1,5 @@
 import { DashboardStore } from "./dashboardStore";
 import { RootStore } from "./rootStore";
-import { fetchListItems } from "services/api";
 import { ListStore } from "./listStore";
 import { listItemsTest } from "utils/testData";
 
